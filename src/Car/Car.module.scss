@@ -1,0 +1,27 @@
+.car {
+  /* border: 2px solid #999; */
+  border-radius: 5px;
+  /* box-shadow: 2px 2px 1px #ddd; */
+  margin: 5px;
+  display: inline-block;
+  padding: 5px;
+  width: 120px;
+  transition: border, box-shadow .3s;
+}
+
+.input:active, :focus {
+  outline: none;
+}
+
+.input.green {
+  border: 2px solid green;
+}
+
+.input.red {
+  border: 2px solid red;
+}
+
+.input.bold {
+  border: 2px solid blue;
+  font-weight: bold;
+}

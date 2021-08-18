@@ -1,37 +1,56 @@
-// const Car = () => {
-//   return (
-//     <h2>Car component</h2>
-//   )
-// }
+import classes from './Car.module.scss';
+import Radium from 'radium';
+// import './Car.css';
 
-const Car = (props) => (
-  <div
-    style={{
-      border: '2px solid #999',
-      borderRadius: '5px',
-      boxShadow: '2px 2px 1px #ddd',
-      margin: '5px',
-      display: 'inline-block',
-      padding: '5px',
-      width: '120px',
-    }}
-  >
-    <div>{props.name}</div>
-    <div>{props.year}</div>
-    <input
-      type='text'
-      style={{ width: '50px' }}
-      onChange={props.onChangeName}
-      value={props.name}
-    />
-    {/* <button onClick={props.onChangeTitle}>Click</button> */}
-    <button onClick={props.onDelete}>Delete</button>
-    {props.children}
-  </div>
-);
+const Car = (props) => {
+  const style = {
+    border: '2px solid #999',
+    boxShadow: '2px 2px 1px #ddd',
+    ':hover': {
+      border: '2px solid #aaa',
+      boxShadow: '0 4px 15px 0 rgba(0, 0, 0, 0.25)',
+      cursor: 'pointer'
+    }
+  }
 
-export default Car;
+  // const inputClasses = [];
+  // if (props.name !== '') {
+  //   inputClasses.push('green');
+  // } else {
+  //   inputClasses.push('red');
+  // }
+  // if (props.name.length > 4) {
+  //   inputClasses.push('bold');
+  // }
 
-// export default () => (
-//   <h2>Car component</h2>
-// );
+  let inputColor = null;
+  if (props.name !== '') {
+    inputColor = 'green';
+  } else {
+    inputColor = 'red';
+  }
+  if (props.name.length > 4) {
+    inputColor = 'bold';
+  }
+  console.log(`${classes.input} ${classes[inputColor]}`);
+
+  return (
+    <div className={classes.car} style={style}>
+      <div>{props.name}</div>
+      <div>{props.year}</div>
+      <input
+        type='text'
+        style={{ width: '50px' }}
+        onChange={props.onChangeName}
+        value={props.name}
+        // className={inputClasses.join(' ')}
+        className={`${classes.input} ${classes[inputColor]}`}
+      />
+      {/* <button onClick={props.onChangeTitle}>Click</button> */}
+      <button onClick={props.onDelete}>Delete</button>
+      {props.children}
+    </div>
+  );
+};
+
+export default Radium(Car);
