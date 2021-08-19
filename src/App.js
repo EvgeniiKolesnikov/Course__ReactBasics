@@ -8,7 +8,7 @@ const cars = [
   { name: 'Audi', year: '2010' },
 ];
 
-function App() {
+function App(props) {
   const [car, setCar] = useState(cars);
   const [title, setTitle] = useState('React Cars');
   const [showCars, setShowCars] = useState(true);
@@ -64,7 +64,10 @@ function App() {
 
   return (
     <div className='App' style={{ textAlign: 'center' }}>
-      <h3>{title}</h3>
+      {/* <h3>{title}</h3> */}
+
+      <h3>{props.titleText}</h3>
+
       {/* <Car name={'Ford'} year={'2015'} />
         <Car name='Audi' year={2017} />
         <Car name='Mers' year={2019} /> */}
