@@ -9,6 +9,10 @@
   transition: border, box-shadow .3s;
 }
 
+.car-container {
+  display: inline-block;
+}
+
 .input:active, :focus {
   outline: none;
 }

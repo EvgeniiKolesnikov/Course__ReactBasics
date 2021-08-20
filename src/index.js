@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import ClassComponent from './ClassComponent/ClassComponent';
 
 ReactDOM.render(
   <React.StrictMode>
     <App titleText={'I am from props!'} />
+    {/* <ClassComponent /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

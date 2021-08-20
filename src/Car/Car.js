@@ -1,8 +1,14 @@
+import React, { useRef } from 'react'
+
 import classes from './Car.module.scss';
 import Radium from 'radium';
+import withClass from '../hoc/withClass';
 // import './Car.css';
+import PropTypes from 'prop-types';
 
 const Car = (props) => {
+  const carInputRef = useRef();
+
   const style = {
     border: '2px solid #999',
     boxShadow: '2px 2px 1px #ddd',
@@ -39,6 +45,7 @@ const Car = (props) => {
       <div>{props.name}</div>
       <div>{props.year}</div>
       <input
+        ref={carInputRef}
         type='text'
         style={{ width: '50px' }}
         onChange={props.onChangeName}
@@ -53,4 +60,12 @@ const Car = (props) => {
   );
 };
 
-export default Radium(Car);
+Car.propTypes = {
+  name: PropTypes.string,
+  year: PropTypes.number,
+  onChangeName: PropTypes.func,
+  onDelete: PropTypes.func
+}
+
+// export default Radium(Car);
+export default withClass(Car, classes['car-container']);

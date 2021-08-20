@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './App.scss';
 import Car from './Car/Car';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 const cars = [
-  { name: 'BMW', year: '2000' },
-  { name: 'Mersedes', year: '2005' },
-  { name: 'Audi', year: '2010' },
+  { name: 'BMW', year: 2000 },
+  { name: 'Mersedes', year: 2005 },
+  { name: 'Audi', year: 2010 },
 ];
 
 function App(props) {
@@ -49,16 +50,17 @@ function App(props) {
   let carForm = null;
   if (showCars) {
     carForm = car.map((car, index) => (
-      <Car
-        key={index}
-        name={car.name}
-        year={car.year}
-        // onChangeTitle={changeTitleHandler.bind(this, car.name)}
-        // тоже самое
-        // onChangeTitle={() => changeTitleHandler(car.name)}
-        onChangeName={(e) => onChangeName(e.target.value, index)}
-        onDelete={deleteHandler.bind(this, index)}
-      />
+      <ErrorBoundary key={index}>
+        <Car
+          name={car.name}
+          year={car.year}
+          // onChangeTitle={changeTitleHandler.bind(this, car.name)}
+          // тоже самое
+          // onChangeTitle={() => changeTitleHandler(car.name)}
+          onChangeName={(e) => onChangeName(e.target.value, index)}
+          onDelete={deleteHandler.bind(this, index)}
+        />
+      </ErrorBoundary>
     ));
   }
 
