@@ -38,8 +38,8 @@ const Car = (props) => {
   if (props.name.length > 4) {
     inputColor = 'bold';
   }
-  console.log(`${classes.input} ${classes[inputColor]}`);
-
+  // console.log(`${classes.input} ${classes[inputColor]}`);
+  // console.log(props);
   return (
     <div className={classes.car} style={style}>
       <div>{props.name}</div>

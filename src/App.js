@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
+import About from './About/About';
 import './App.scss';
 import Car from './Car/Car';
+import CarDetail from './CarDetail/CarDetail';
+import Cars from './Cars/Cars';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 const cars = [
@@ -13,7 +17,8 @@ function App(props) {
   const [car, setCar] = useState(cars);
   const [title, setTitle] = useState('React Cars');
   const [showCars, setShowCars] = useState(true);
-
+  const [login, setLogin] = useState(false);
+  
   function changeTitleHandler(newTitle) {
     setTitle((_value) => newTitle);
   }
@@ -80,7 +85,35 @@ function App(props) {
         </button>
         <button onClick={toggleHandler}>On/Off</button>
       </div>
-      <div>{carForm}</div>
+      <nav className='nav'>
+        <ul>
+          <li>
+            <NavLink to='/' exact activeClassName={'wfm-active'}>Home</NavLink>
+          </li>
+          <li>
+            <NavLink to='/about' activeStyle={{color: 'blue'}}>About</NavLink>
+          </li>
+          <li>
+            <NavLink to={{
+              pathname: '/cars',
+              search: '?a=1&b=2',
+              hash: 'wfm-hash'}}>Cars</NavLink>
+          </li>
+        </ul>
+      </nav>
+      <hr />
+      <button onClick={() => setLogin(true)}>Login</button>
+      <hr />
+      <Switch>
+        <Route path='/' exact render={() => <h1>Home</h1>} />
+        {login && <Route path='/about' component={About} />}
+        <Route path='/cars/:name' component={CarDetail} />
+        <Route path='/cars' component={Cars} />
+        {/* <Route render={() => <h1>Error 404</h1>} /> */}
+        <Redirect to='/' />
+      </Switch>
+      {/* <About />
+      <div>{carForm}</div> */}
     </div>
   );
 }
