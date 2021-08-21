@@ -7,6 +7,12 @@ import CarDetail from './CarDetail/CarDetail';
 import Cars from './Cars/Cars';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
+import Layout from './hoc/Layout/Layout'
+import Quiz from './containers/Quiz/Quiz'
+import QuizList from './containers/QuizList/QuizList'
+import Auth from './containers/Auth/Auth'
+import QuizCreator from './containers/QuizCreator/QuizCreator'
+
 const cars = [
   { name: 'BMW', year: 2000 },
   { name: 'Mersedes', year: 2005 },
@@ -110,10 +116,18 @@ function App(props) {
         <Route path='/cars/:name' component={CarDetail} />
         <Route path='/cars' component={Cars} />
         {/* <Route render={() => <h1>Error 404</h1>} /> */}
-        <Redirect to='/' />
+        {/* <Redirect to='/' /> */}
       </Switch>
       {/* <About />
       <div>{carForm}</div> */}
+      <Layout>
+        <Switch>
+          <Route path="/auth" component={Auth} />
+          <Route path="/quiz-creator" component={QuizCreator} />
+          <Route path="/quiz/:id" component={Quiz} />
+          <Route path="/" component={QuizList} />
+        </Switch>
+      </Layout>
     </div>
   );
 }
