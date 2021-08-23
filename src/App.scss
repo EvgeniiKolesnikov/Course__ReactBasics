@@ -1,10 +1,13 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
+
 .AppButton {
   padding: 8px 10px;
   border: 1px solid #ccc;
   font-weight: bold;
   text-transform: uppercase;
 
-  &:focus, &:active {
+  &:focus,
+  &:active {
     outline: none;
   }
 
@@ -12,7 +15,6 @@
     background: #f0ff1e;
   }
 }
-
 
 .nav {
   ul {
@@ -25,7 +27,8 @@
 
     li {
       margin-right: 15px;
-      a.active, a.wfm-active {
+      a.active,
+      a.wfm-active {
         font-weight: bold;
         color: red;
       }
